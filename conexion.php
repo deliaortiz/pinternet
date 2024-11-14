@@ -4,7 +4,7 @@
 $db_host = "localhost";
 $db_user = "root";
 $db_pass = "";/*campo de la contraseña*/
-$db_name = "jaguarete";/*nombre del usuario*/
+$db_name = "biblioteca";/*nombre del usuario*/
 
 $con = mysqli_connect($db_host, $db_user, $db_pass, $db_name);
 

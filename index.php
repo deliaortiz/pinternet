@@ -17,7 +17,7 @@ include("conexion.php");
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Administración</title>
+	<title>Administración biblioteca</title>
 
 	<!-- estilos de Bootstrap -->
 	<link href="css/bootstrap.min.css" rel="stylesheet">
@@ -38,7 +38,7 @@ include("conexion.php");
 	</nav>
 	<div class="container">
 		<div class="content">
-			<h2>E-Commerce Admin: <?php echo $_SESSION['user_name']; ?></h2>
+			<h2>Biblioteca Digital: <?php echo $_SESSION['user_name']; ?></h2>
 			<hr />
 </body>
 </html>

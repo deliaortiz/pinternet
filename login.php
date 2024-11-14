@@ -107,7 +107,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <div class="login-box">
     
         <h2>Login</h2>
-        <p>Por favor ingrese usuario y contraseña.</p>
+
 
         <?php 
         if(!empty($login_err)){
