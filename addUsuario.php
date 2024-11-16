@@ -9,9 +9,14 @@ if ($_SESSION['rol_desc'] != 'Admin') {
 }
 
 // Obtener roles y maestros para los selects
-$roles = $pdo->query("SELECT * FROM roles")->fetchAll();
-$maestras = $pdo->query("SELECT * FROM Maestra")->fetchAll();
-$personas = $pdo->query("SELECT * FROM personas")->fetchAll(); // Obtener personas para el select
+$roles = mysqli_query($con, "SELECT * FROM roles");
+$maestras = mysqli_query($con, "SELECT * FROM Maestra");
+$personas = mysqli_query($con, "SELECT * FROM personas"); // Obtener personas para el select
+
+// Transformar los resultados en arrays
+$rolesArray = mysqli_fetch_all($roles, MYSQLI_ASSOC);
+$maestrasArray = mysqli_fetch_all($maestras, MYSQLI_ASSOC);
+$personasArray = mysqli_fetch_all($personas, MYSQLI_ASSOC); // Asegúrate de no tener caracteres extraños aquí
 ?>
 
 <!DOCTYPE html>
@@ -26,43 +31,23 @@ $personas = $pdo->query("SELECT * FROM personas")->fetchAll(); // Obtener person
     <h2>Agregar Usuario</h2>
     <form method="POST" action="guardarUsuario.php">
         <div class="form-group">
-            <label for="personaID">Selecciona Persona:</label>
-            <select name="personaID" class="form-control" required>
-                <?php foreach ($personas as $persona) {
-                    echo "<option value='{$persona['personaID']}'>{$persona['nombre']} {$persona['apellido']}</option>";
-                } ?>
-            </select>
+            <label for="nombre">Nombre:</label>
+            <input type="text" name="nombre" class="form-control" required>
         </div>
 
         <div class="form-group">
-            <label for="id_rol">Selecciona Rol:</label>
-            <select name="id_rol" class="form-control" required>
-                <?php foreach ($roles as $rol) {
-                    echo "<option value='{$rol['id_rol']}'>{$rol['rol_desc']}</option>";
-                } ?>
-            </select>
+            <label for="apellido">Apellido:</label>
+            <input type="text" name="apellido" class="form-control" required>
         </div>
 
         <div class="form-group">
-            <label for="username">Nombre de Usuario:</label>
-            <input type="text" name="username" class="form-control" required>
+            <label for="email">Correo Electrónico:</label>
+            <input type="email" name="email" class="form-control" required>
         </div>
 
-        <div class="form-group">
-            <label for="password">Contraseña:</label>
-            <input type="password" name="password" class="form-control" required>
-        </div>
+        <!-- Agrega más campos según sea necesario -->
 
-        <div class="form-group">
-            <label for="Id_maestra">Selecciona Maestra:</label>
-            <select name="Id_maestra" class="form-control" required>
-                <?php foreach ($maestras as $maestra) {
-                    echo "<option value='{$maestra['Id']}'>{$maestra['nombre']}</option>";
-                } ?>
-            </select>
-        </div>
-
-        <button type="submit" class="btn btn-primary">Crear Usuario</button>
+        <button type="submit" class="btn btn-primary">Registrar Usuario</button>
     </form>
 </div>
 </body>

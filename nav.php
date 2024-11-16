@@ -11,10 +11,11 @@
     </div>
     <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
+        <li><a href="index.php">Inicio</a></li>
             <!-- Enlace para agregar usuario -->
             <?php if ($_SESSION['rol_desc'] == 'Admin') { ?>
                 <li><a href="addUsuario.php">Agregar Usuario</a></li>
-                <li><a href="prestamo.php">Prestar Libro</a></li>
+                <li><a href="prestamo.php">Prestar Libro</a></li> <!-- Enlace a la página de préstamo -->
                 <!-- Otras opciones administrativas -->
             <?php } ?>
             <li><a href="logout.php"><i class="fa fa-th-large"></i> Salir</a></li>
